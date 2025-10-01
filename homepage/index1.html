@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulp Fiction - Quentin Tarantino's Masterpiece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'Georgia', serif;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .spiral-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at center,
+                transparent 0%,
+                transparent 20%,
+                #D4AF37 20.5%,
+                transparent 21%,
+                transparent 30%,
+                #D4AF37 30.5%,
+                transparent 31%,
+                transparent 40%,
+                #D4AF37 40.5%,
+                transparent 41%,
+                transparent 50%,
+                #D4AF37 50.5%,
+                transparent 51%,
+                transparent 60%,
+                #D4AF37 60.5%,
+                transparent 61%,
+                transparent 70%,
+                #D4AF37 70.5%,
+                transparent 71%,
+                transparent 80%,
+                #D4AF37 80.5%,
+                transparent 81%
+            );
+            animation: spiral-rotation 20s linear infinite;
+        }
+
+        .spiral-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-conic-gradient(
+                from 0deg at center,
+                transparent 0deg,
+                transparent 8deg,
+                #D4AF37 8.5deg,
+                #D4AF37 9deg,
+                transparent 9.5deg,
+                transparent 17deg
+            );
+            opacity: 0.3;
+            animation: spiral-rotation 30s linear infinite reverse;
+        }
+
+        @keyframes spiral-rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title-box {
+            background-color: #D4AF37;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.5),
+                0 0 60px rgba(212, 175, 55, 0.3),
+                0 0 90px rgba(212, 175, 55, 0.1);
+            animation: pulse-glow 3s ease-in-out infinite alternate;
+            margin-bottom: 30px;
+            transform: perspective(1000px) rotateX(5deg);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.5),
+                    0 0 60px rgba(212, 175, 55, 0.3),
+                    0 0 90px rgba(212, 175, 55, 0.1);
+            }
+            100% {
+                box-shadow: 
+                    0 0 50px rgba(212, 175, 55, 0.8),
+                    0 0 100px rgba(212, 175, 55, 0.5),
+                    0 0 150px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        .title {
+            font-size: 4.5em;
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #D4AF37;
+            text-align: center;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            text-shadow: 
+                0 0 10px rgba(212, 175, 55, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: subtitle-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtitle-glow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(212, 175, 55, 0.8),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+            100% {
+                text-shadow: 
+                    0 0 20px rgba(212, 175, 55, 1),
+                    0 0 30px rgba(212, 175, 55, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* Geometric spiral elements */
+        .geometric-element {
+            position: absolute;
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .geometric-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .geometric-element:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .geometric-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 15%;
+            right: 25%;
+            animation-delay: 4s;
+        }
+
+        .geometric-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .title-box {
+                padding: 20px 30px;
+                margin: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spiral-background"></div>
+    <div class="spiral-overlay"></div>
+    
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">Pulp Fiction</h1>
+        </div>
+        <p class="subtitle">Quentin Tarantino's Masterpiece</p>
+    </div>
+</body>
+</html>
