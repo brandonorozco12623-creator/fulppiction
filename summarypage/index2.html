@@ -206,6 +206,40 @@
             font-size: 1em;
         }
 
+        .nav-button {
+            display: inline-block;
+            background-color: #D4AF37;
+            color: #000000;
+            padding: 15px 30px;
+            margin: 20px auto;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 5px 15px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.2);
+            border: 2px solid #D4AF37;
+            text-align: center;
+        }
+
+        .nav-button:hover {
+            background-color: #000000;
+            color: #D4AF37;
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.6),
+                0 0 30px rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .nav-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         /* Geometric spiral elements */
         .geometric-element {
             position: fixed;
@@ -306,6 +340,10 @@
         <div class="title-box">
             <h1 class="title">Pulp Fiction</h1>
             <p class="subtitle">Movie Summary & Cast Information</p>
+        </div>
+        
+        <div class="nav-container">
+            <a href="../homepage/index1.html" class="nav-button">Back to Homepage</a>
         </div>
         
         <div class="content-wrapper">
