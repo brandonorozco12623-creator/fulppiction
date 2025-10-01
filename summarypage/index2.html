@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulp Fiction - Movie Summary & Cast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .spiral-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at center,
+                transparent 0%,
+                transparent 20%,
+                #D4AF37 20.5%,
+                transparent 21%,
+                transparent 30%,
+                #D4AF37 30.5%,
+                transparent 31%,
+                transparent 40%,
+                #D4AF37 40.5%,
+                transparent 41%,
+                transparent 50%,
+                #D4AF37 50.5%,
+                transparent 51%,
+                transparent 60%,
+                #D4AF37 60.5%,
+                transparent 61%,
+                transparent 70%,
+                #D4AF37 70.5%,
+                transparent 71%,
+                transparent 80%,
+                #D4AF37 80.5%,
+                transparent 81%
+            );
+            animation: spiral-rotation 20s linear infinite;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .spiral-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-conic-gradient(
+                from 0deg at center,
+                transparent 0deg,
+                transparent 8deg,
+                #D4AF37 8.5deg,
+                #D4AF37 9deg,
+                transparent 9.5deg,
+                transparent 17deg
+            );
+            opacity: 0.2;
+            animation: spiral-rotation 30s linear infinite reverse;
+            z-index: 2;
+        }
+
+        @keyframes spiral-rotation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .title-box {
+            background-color: #D4AF37;
+            padding: 30px 50px;
+            border-radius: 10px;
+            box-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.5),
+                0 0 60px rgba(212, 175, 55, 0.3),
+                0 0 90px rgba(212, 175, 55, 0.1);
+            animation: pulse-glow 3s ease-in-out infinite alternate;
+            margin-bottom: 40px;
+            transform: perspective(1000px) rotateX(5deg);
+            text-align: center;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 
+                    0 0 30px rgba(212, 175, 55, 0.5),
+                    0 0 60px rgba(212, 175, 55, 0.3),
+                    0 0 90px rgba(212, 175, 55, 0.1);
+            }
+            100% {
+                box-shadow: 
+                    0 0 50px rgba(212, 175, 55, 0.8),
+                    0 0 100px rgba(212, 175, 55, 0.5),
+                    0 0 150px rgba(212, 175, 55, 0.3);
+            }
+        }
+
+        .title {
+            font-size: 3em;
+            font-weight: bold;
+            color: #000000;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #000000;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-top: 10px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .content-box {
+            background: rgba(212, 175, 55, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(5px);
+            border: 2px solid #D4AF37;
+        }
+
+        .content-box h2 {
+            color: #000000;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-box h3 {
+            color: #000000;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 5px;
+        }
+
+        .content-box p {
+            color: #000000;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .cast-member {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #000000;
+        }
+
+        .cast-member strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #000000;
+        }
+
+        .cast-member em {
+            color: #333333;
+            font-size: 1em;
+        }
+
+        /* Geometric spiral elements */
+        .geometric-element {
+            position: fixed;
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .geometric-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .geometric-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 70%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .geometric-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        .geometric-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2em;
+            }
+            
+            .title-box {
+                padding: 20px 30px;
+                margin: 0 10px 30px 10px;
+            }
+            
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .content-box h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spiral-background"></div>
+    <div class="spiral-overlay"></div>
+    
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    <div class="geometric-element"></div>
+    
+    <div class="container">
+        <div class="title-box">
+            <h1 class="title">Pulp Fiction</h1>
+            <p class="subtitle">Movie Summary & Cast Information</p>
+        </div>
+        
+        <div class="content-wrapper">
+            <!-- Movie Summary Section -->
+            <div class="content-box">
+                <h2>Movie Summary</h2>
+                
+                <h3>Plot Overview</h3>
+                <p>Pulp Fiction is a 1994 neo-noir crime film that weaves together multiple interconnected storylines in a non-linear narrative. The film follows the lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits in a series of tales of violence and redemption in Los Angeles.</p>
+                
+                <h3>Main Storylines</h3>
+                <p><strong>Vincent Vega & Jules Winnfield:</strong> Two philosophical hitmen retrieve a mysterious briefcase for their boss, crime lord Marsellus Wallace. Their journey leads them through various encounters, including a "miracle" that changes Jules' perspective on life.</p>
+                
+                <p><strong>The Gold Watch:</strong> Boxer Butch Coolidge is paid to throw a fight but instead wins, betraying Marsellus Wallace. He must retrieve his father's precious gold watch while evading Wallace's wrath.</p>
+                
+                <p><strong>The Bonnie Situation:</strong> Vincent accidentally kills a man in the car, leading to a frantic cleanup operation with the help of their friend Winston "The Wolf" Wolfe.</p>
+                
+                <p><strong>Vincent & Mia:</strong> Vincent takes Marsellus Wallace's wife Mia out for an evening, which takes a dangerous turn when Mia overdoses on heroin she mistakes for cocaine.</p>
+                
+                <h3>Themes</h3>
+                <p>The film explores themes of redemption, fate, violence, and pop culture. Tarantino masterfully blends dark humor with intense violence, creating a unique cinematic experience that redefined independent filmmaking and influenced countless directors.</p>
+            </div>
+            
+            <!-- Cast Information Section -->
+            <div class="content-box">
+                <h2>Main Cast</h2>
+                
+                <div class="cast-member">
+                    <strong>John Travolta</strong>
+                    <em>as Vincent Vega</em>
+                    <p>A smooth-talking hitman with a philosophical bent and a heroin addiction. Travolta's iconic performance revitalized his career.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Samuel L. Jackson</strong>
+                    <em>as Jules Winnfield</em>
+                    <p>Vincent's partner, a quotation-spouting hitman who experiences a spiritual awakening after a "miracle" during a job.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Bruce Willis</strong>
+                    <em>as Butch Coolidge</em>
+                    <p>An aging boxer who refuses to throw a fight as planned, leading to a dangerous game of cat and mouse with Marsellus Wallace.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Uma Thurman</strong>
+                    <em>as Mia Wallace</em>
+                    <p>The enigmatic wife of crime boss Marsellus Wallace, whose night out with Vincent takes a near-fatal turn.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Ving Rhames</strong>
+                    <em>as Marsellus Wallace</em>
+                    <p>A powerful crime boss whose authority is tested throughout the film's interconnected stories.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Harvey Keitel</strong>
+                    <em>as Winston "The Wolf" Wolfe</em>
+                    <p>A professional problem solver who helps clean up a bloody mess with efficiency and style.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Tim Roth</strong>
+                    <em>as "Pumpkin" / Ringo</em>
+                    <p>A small-time robber who, along with his girlfriend, decides to rob a diner in the film's opening and closing scenes.</p>
+                </div>
+                
+                <div class="cast-member">
+                    <strong>Amanda Plummer</strong>
+                    <em>as "Honey Bunny" / Yolanda</em>
+                    <p>Pumpkin's volatile girlfriend and partner in crime during the diner robbery.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
